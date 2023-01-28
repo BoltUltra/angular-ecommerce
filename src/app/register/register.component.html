@@ -1,0 +1,65 @@
+<app-navbar></app-navbar>
+<div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Register</h2>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <form class="space-y-6" (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Name</label>
+          <div class="mt-1">
+            <input id="name" formControlName="name" type="text" required
+              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-hr focus:outline-none focus:ring-hr sm:text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
+          <div class="mt-1">
+            <input id="email" formControlName="email" type="email" required
+              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-hr focus:outline-none focus:ring-hr sm:text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="mt-1">
+            <input id="password" formControlName="password" type="password" required
+              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-hr focus:outline-none focus:ring-hr sm:text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+          <div class="mt-1">
+            <input id="passwordConfirmation" formControlName="password_confirmation" type="password" required
+              class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-hr focus:outline-none focus:ring-hr sm:text-sm">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <p class="text-sm">Have an account? <span><a routerLink="/login"
+                  class="text-primary hover:text-hr hover:underline">Login</a></span></p>
+          </div>
+
+          <div class="text-sm">
+            <a href="#" class="font-medium text-primary hover:text-hr">Forgot your password?</a>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit"
+            class="flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-hr focus:outline-none focus:ring-2 focus:ring-hr focus:ring-offset-2">Submit</button>
+        </div>
+      </form>
+
+      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div *ngIf="successMessage">{{ successMessage }}</div>
+
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
