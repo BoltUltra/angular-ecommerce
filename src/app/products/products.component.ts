@@ -17,7 +17,7 @@ export class ProductsComponent {
         'https://ecom.hoolioapps.com/api/products'
       );
       this.products = response.data.data;
-      console.log(this.products);
+      console.log(this.products.length);
     } catch (error) {
       this.errorMessage = 'An error occurred while fetching the data';
       console.log(error);

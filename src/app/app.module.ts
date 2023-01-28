@@ -20,7 +20,9 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { TopnavComponent } from './topnav/topnav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +35,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+    TopnavComponent,
+    SidebarComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
