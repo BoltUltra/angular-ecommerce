@@ -32,6 +32,7 @@ module.exports = {
         yellow: "#E3BC01",
         topnav: "#F5F5F5",
         slider: "#212844",
+        hr: "#05ABF3",
       },
     },
   },
