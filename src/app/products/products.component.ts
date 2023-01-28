@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import axios from 'axios';
 
 @Component({
   selector: 'app-products',
@@ -6,8 +7,20 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  @Input() message: string = '';
-  constructor() {
-    this.message = '';
+  products: any;
+  p = 1;
+  errorMessage = '';
+
+  async ngOnInit() {
+    try {
+      const response = await axios.get(
+        'https://ecom.hoolioapps.com/api/products'
+      );
+      this.products = response.data.data;
+      console.log(this.products);
+    } catch (error) {
+      this.errorMessage = 'An error occurred while fetching the data';
+      console.log(error);
+    }
   }
 }

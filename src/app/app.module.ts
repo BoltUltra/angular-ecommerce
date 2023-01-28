@@ -11,6 +11,8 @@ import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SliderContentComponent } from './slider-content/slider-content.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { SliderContentComponent } from './slider-content/slider-content.componen
     SliderComponent,
     ProductsComponent,
     SliderContentComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { SliderContentComponent } from './slider-content/slider-content.componen
     SwiperModule,
     FormsModule,
     CommonModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
