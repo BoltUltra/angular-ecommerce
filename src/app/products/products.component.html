@@ -1,12 +1,12 @@
-<div class="md:px-32 px-5">
+<div class="lg:px-32 md:px-10 px-5">
   <div class="font-bold text-primary md:text-3xl font-xl py-5 space-y-2 uppercase">
     <p>Products</p>
     <div class="h-1 md:w-1/4 w-1/2 bg-primary rounded-full"></div>
   </div>
   <ng-container *ngIf="!errorMessage">
     <ng-container *ngIf="products && products.length > 0">
-      <div class="grid md:grid-cols-4 grid-cols-2 md:gap-10 gap-5">
-        <div *ngFor="let product of products  | paginate: { itemsPerPage: 20, currentPage: p }">
+      <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5">
+        <div *ngFor="let product of products  | paginate: { itemsPerPage: 30, currentPage: p }">
           <div
             class="rounded-md shadow hover:border hover:border-primary cursor-pointer border border-transparent hover:scale-105 transition transform duration-200 ease-out">
             <img src={{product.image}} alt="" class="md:h-40 h-32 w-full object-cover rounded-t-md">
@@ -17,13 +17,8 @@
           </div>
         </div>
       </div>
-      <div class="flex justify-center py-10">
-        <style>
-          span {
-            display: none !important;
-          }
-        </style>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <div class="flex justify-center py-10 md:text-base text-sm">
+        <pagination-controls (pageChange)="p = $event" nextLabel="Next" previousLabel="Prev"></pagination-controls>
       </div>
     </ng-container>
     <div *ngIf="!products || products.length === 0" class="">
