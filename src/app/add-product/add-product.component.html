@@ -4,6 +4,34 @@
   </div>
   <div class="md:w-[80%] space-y-5">
     <app-topnav></app-topnav>
-    <p>Add Product</p>
+    <div class="flex justify-center px-5 w-full">
+      <div>
+        <div class="font-bold text-slider md:text-3xl font-xl py-5 space-y-2 uppercase text-center">
+          <p>Add Product</p>
+          <!-- <div class="h-1 md:w-2/4 w-1/2 bg-slider rounded-full"></div> -->
+        </div>
+        <form (ngSubmit)="addProduct()" class="space-y-5">
+          <div>
+            <!-- <label for="name">Product Name</label> -->
+            <input type="text" [(ngModel)]="product.name" name="name" placeholder="Product Name"
+              class="border-b w-full outline-none border-b-slider py-3 px-2">
+          </div>
+          <div>
+            <input type="file" (change)="onFileChange($event)" name="image"
+              class="border-b w-full outline-none border-b-slider py-3 px-2">
+          </div>
+          <div>
+            <textarea [(ngModel)]="product.description" name="description" placeholder="Product Description"
+              class="border w-full outline-none border-slider py-3 px-2"></textarea>
+          </div>
+          <div>
+            <input type="number" [(ngModel)]="product.price" name="price" placeholder="Product Price"
+              class="border-b w-full outline-none border-b-slider py-3 px-2">
+          </div>
+          <button type="submit" class="w-full bg-slider py-3 px-2 text-white">Add Product</button>
+        </form>
+      </div>
+    </div>
   </div>
+  <app-bottom-nav></app-bottom-nav>
 </div>

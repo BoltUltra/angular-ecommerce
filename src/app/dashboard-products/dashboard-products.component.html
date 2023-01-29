@@ -1,0 +1,52 @@
+<div class="md:flex">
+  <div class="md:w-[20%]">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="md:w-[80%] space-y-5 md:h-screen overflow-y-scroll">
+    <app-topnav></app-topnav>
+    <div>
+      <div class="lg:px-32 md:px-10 px-5">
+        <div class="font-bold text-slider md:text-3xl font-xl py-5 space-y-2 uppercase">
+          <p>All Products</p>
+          <div class="h-1 md:w-2/4 w-1/2 bg-slider rounded-full"></div>
+        </div>
+        <ng-container *ngIf="!errorMessage">
+          <ng-container *ngIf="products && products.length > 0">
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 md:gap-10 gap-5">
+              <div *ngFor="let product of products  | paginate: { itemsPerPage: 30, currentPage: p }">
+                <div
+                  class="rounded-md shadow hover:border hover:border-primary cursor-pointer border border-transparent hover:scale-105 transition transform duration-200 ease-out">
+                  <img src={{product.image}} alt="" class="md:h-40 h-32 w-full object-cover rounded-t-md">
+                  <div class="p-5">
+                    <p class="font-bold capitalize">{{ product.name }}</p>
+                    <p class="">${{ product.price }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center py-10 md:text-base text-sm">
+              <pagination-controls (pageChange)="p = $event" nextLabel="Next"
+                previousLabel="Prev"></pagination-controls>
+            </div>
+          </ng-container>
+          <div *ngIf="!products || products.length === 0" class="">
+            <div class="grid md:grid-cols-4 grid-cols-2 md:gap-10 gap-5">
+              <div class="rounded shadow space-y-3 animate-pulse">
+                <div class="h-40 w-full object-cover rounded-t-md bg-gray-200"></div>
+                <div class="p-5 space-y-3">
+                  <p class="font-bold capitalize bg-gray-200 p-3 rounded-full"></p>
+                  <p class="bg-gray-200 p-3 rounded-full"></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+        <p *ngIf="errorMessage">An error occurred while fetching the products</p>
+      </div>
+
+    </div>
+    <app-bottom-nav></app-bottom-nav>
+
+  </div>
+</div>

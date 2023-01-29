@@ -23,6 +23,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopnavComponent } from './topnav/topnav.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
+import { DataTablesModule } from 'angular-datatables';
+import { DashboardProductsComponent } from './dashboard-products/dashboard-products.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +43,9 @@ import { AddProductComponent } from './add-product/add-product.component';
     TopnavComponent,
     SidebarComponent,
     AddProductComponent,
+    BottomNavComponent,
+    DashboardProductsComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     CommonModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

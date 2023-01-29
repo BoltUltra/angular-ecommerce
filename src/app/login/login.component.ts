@@ -26,25 +26,6 @@ export class LoginComponent {
     });
   }
 
-  // onSubmit() {
-  //   axios
-  //     .post('https://ecom.hoolioapps.com/api/login', this.loginForm.value)
-  //     .then((response) => {
-  //       // check the response for a successful login
-  //       if (response.data.success) {
-  //         // navigate to the dashboard component
-  //         console.log('success');
-  //         this.router.navigate(['/dashboard']);
-  //       } else {
-  //         // display an error message
-  //         this.errorMessage = response.data.message;
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
-
   onSubmit() {
     // Send the login request to the API
     axios
@@ -52,6 +33,9 @@ export class LoginComponent {
       .then((response) => {
         // handle success
         // console.log('success');
+        console.log(response);
+        console.log(response.data.data.token);
+        localStorage.setItem('token', response.data.data.token);
         this.router.navigate(['/dashboard']);
       })
       .catch((error) => {

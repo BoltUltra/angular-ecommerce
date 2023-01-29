@@ -2,8 +2,52 @@
   <div class="md:w-[20%]">
     <app-sidebar></app-sidebar>
   </div>
-  <div class="md:w-[80%] space-y-5">
+  <div class="md:w-[80%] space-y-5 md:h-screen overflow-y-scroll">
     <app-topnav></app-topnav>
-    <p>dashboard content!</p>
+    <div class="grid md:grid-cols-3 text-center md:px-5 px-10">
+      <div class="bg-slider text-white py-5 rounded-md">
+        <p class="text-lg font-semibold uppercase">Total Products</p>
+        <p class="text-5xl font-extrabold">{{products.length}}</p>
+      </div>
+    </div>
+    <div class="px-5 py-10">
+      <div class="overflow-x-scroll">
+        <table datatable class="row-border hover" id="dashboard">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th class="whitespace-nowrap">Name</th>
+              <th class="whitespace-nowrap">Price</th>
+              <th class="whitespace-nowrap">Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products">
+              <td>{{product.id}}</td>
+              <td class="whitespace-nowrap capitalize">{{product.name}}</td>
+              <td>${{product.price}}</td>
+              <td class="whitespace-nowrap">{{product.created_at | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+              <td class="flex space-x-2">
+
+                <button (click)="deleteProduct(product.id)"
+                  class="flex items-center space-x-2 bg-red-500 text-white py-2 px-3 rounded-md" title="Delete"><span><i
+                      class="fa-solid fa-trash"></i></span><span class="md:block hidden">Delete</span></button>
+                <button class="flex items-center space-x-2 bg-blue-500 text-white py-2 px-3 rounded-md"
+                  title="Delete"><span><i class="fa-regular fa-pen-to-square"></i></span><span
+                    class="md:block hidden">Update</span></button>
+
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <app-bottom-nav></app-bottom-nav>
+
   </div>
 </div>
