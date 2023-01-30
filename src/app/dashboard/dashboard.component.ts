@@ -8,20 +8,6 @@ import axios from 'axios';
 })
 export class DashboardComponent implements OnInit {
   products: any;
-  // errorMessage = '';
-
-  // async ngOnInit() {
-  //   try {
-  //     const response = await axios.get(
-  //       'https://ecom.hoolioapps.com/api/products'
-  //     );
-  //     this.products = response.data.data;
-  //     console.log(this.products.length);
-  //   } catch (error) {
-  //     // this.errorMessage = 'An error occurred while fetching the data';
-  //     console.log(error);
-  //   }
-  // }
 
   constructor() {}
 

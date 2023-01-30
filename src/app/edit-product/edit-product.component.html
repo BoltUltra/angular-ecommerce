@@ -1,1 +1,9 @@
-<p>edit-product works!</p>
+<div>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="name" placeholder="Name" />
+    <input type="file" formControlName="image" placeholder="Image" />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+    <input type="number" formControlName="price" placeholder="Price" />
+    <button type="submit">Submit</button>
+  </form>
+</div>

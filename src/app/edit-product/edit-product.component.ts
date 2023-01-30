@@ -1,42 +1,40 @@
-import { Component, OnInit, Input } from '@angular/core';
-import axios from 'axios';
+// import { Component, OnInit } from '@angular/core';
+// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import axios from 'axios';
 
-@Component({
-  selector: 'app-edit-product',
-  templateUrl: './edit-product.component.html',
-  styleUrls: ['./edit-product.component.css'],
-})
-export class EditProductComponent {
-  product: any; // Declare the property
-  updateProduct() {
-    const id = this.product.id;
-    const data = {
-      _method: 'PATCH',
-      name: this.product.name,
-      description: this.product.description,
-      image: this.product.image,
-      price: this.product.price,
-    };
+// @Component({
+//   selector: 'app-edit-product',
+//   templateUrl: './edit-product.component.html',
+//   styleUrls: ['./edit-product.component.css'],
+// })
+// export class EditProductComponent implements OnInit {
+//   editForm: FormGroup;
 
-    axios
-      .patch(`https://ecom.hoolioapps.com/api/products/${id}`, data, {
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        withCredentials: true,
-        auth: {
-          username: 'Token',
-          password: '<token>',
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        // handle success
-      })
-      .catch((error) => {
-        console.log(error);
-        // handle error
-      });
-  }
-}
+//   constructor(private fb: FormBuilder) {}
+
+//   ngOnInit() {
+//     this.editForm = this.fb.group({
+//       name: ['', Validators.required],
+//       image: [null, Validators.required],
+//       description: ['', Validators.required],
+//       price: [0, Validators.required],
+//     });
+//   }
+
+//   onSubmit() {
+//     const formData = new FormData();
+//     formData.append('name', this.editForm.get('name').value);
+//     formData.append('image', this.editForm.get('image').value);
+//     formData.append('description', this.editForm.get('description').value);
+//     formData.append('price', this.editForm.get('price').value);
+
+//     axios
+//       .put(`https://ecom.hoolioapps.com/api/products/${productId}`, formData)
+//       .then((response) => {
+//         console.log(response.data);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }
+// }
