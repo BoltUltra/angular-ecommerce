@@ -11,6 +11,7 @@ import axios from 'axios';
 export class LoginComponent {
   errorMessage: string = '';
   loginForm: FormGroup;
+  successMessage: string = '';
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -35,8 +36,11 @@ export class LoginComponent {
         // console.log('success');
         console.log(response);
         console.log(response.data.data.token);
+        this.successMessage = 'Login successful!';
         localStorage.setItem('token', response.data.data.token);
-        this.router.navigate(['/dashboard']);
+        setTimeout(() => {
+          this.router.navigate(['/dashboard']);
+        }, 2000);
       })
       .catch((error) => {
         // handle error

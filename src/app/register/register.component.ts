@@ -35,7 +35,9 @@ export class RegisterComponent implements OnInit {
       .then((response) => {
         console.log(response);
         this.successMessage = 'Registration successful!';
-        this.router.navigate(['/login']);
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 2000);
         // this.form.reset();
       })
       .catch((error) => {

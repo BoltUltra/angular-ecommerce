@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -14,9 +15,13 @@ export class AddProductComponent implements OnInit {
     price: 0,
   };
 
+  message = '';
+
   onFileChange(event: any) {
     this.product.image = event.target.files[0];
   }
+
+  constructor(private router: Router) {}
 
   addProduct() {
     const formData = new FormData();
@@ -34,7 +39,11 @@ export class AddProductComponent implements OnInit {
         },
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.message);
+        this.message = response.data.message;
+        setTimeout(() => {
+          this.router.navigate(['/dashboard']);
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);

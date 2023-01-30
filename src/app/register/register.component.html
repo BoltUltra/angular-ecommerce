@@ -56,8 +56,9 @@
         </div>
       </form>
 
-      <div *ngIf="errorMessage">{{ errorMessage }}</div>
-      <div *ngIf="successMessage">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="text-center bg-red-50 text-red-700 py-2 rounded-md my-5">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="text-center bg-green-50 text-green-700 py-2 rounded-md my-5">{{ successMessage
+        }}</div>
 
     </div>
   </div>
