@@ -26,6 +26,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { DataTablesModule } from 'angular-datatables';
 import { DashboardProductsComponent } from './dashboard-products/dashboard-products.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DashboardProductsComponent } from './dashboard-products/dashboard-produ
     AddProductComponent,
     BottomNavComponent,
     DashboardProductsComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,
