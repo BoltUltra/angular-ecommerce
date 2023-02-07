@@ -10,7 +10,13 @@
         <p class="text-5xl font-extrabold">{{products.length}}</p>
       </div>
     </div>
-    <div class="px-5 py-10">
+    <div class="px-5 py-10 relative">
+
+      <p *ngIf="successMessage" [@fadeOut]
+        class="bg-green-50 text-green-800 py-3 text-center md:mx-20 rounded border border-green-800">
+        Products deleted successfully
+      </p>
+
       <div class="overflow-x-scroll">
         <table datatable class="row-border hover" id="dashboard">
           <thead>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import axios from 'axios';
 
 @Component({
@@ -8,6 +9,7 @@ import axios from 'axios';
 })
 export class DashboardComponent implements OnInit {
   products: any;
+  successMessage: boolean = false;
 
   constructor() {}
 
@@ -39,7 +41,12 @@ export class DashboardComponent implements OnInit {
         },
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data.message);
+        this.successMessage = true;
+        setTimeout(() => {
+          this.successMessage = false;
+        }, 2000);
+
         // handle successful deletion
       })
       .catch((error) => {
@@ -48,3 +55,11 @@ export class DashboardComponent implements OnInit {
       });
   }
 }
+animations: [
+  trigger('fadeOut', [
+    transition(':leave', [
+      style({ opacity: 1 }),
+      animate(2000, style({ opacity: 0 })),
+    ]),
+  ]),
+];
