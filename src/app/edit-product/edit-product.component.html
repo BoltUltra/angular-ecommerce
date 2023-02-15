@@ -1,9 +1,39 @@
-<div>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="name" placeholder="Name" />
-    <input type="file" formControlName="image" placeholder="Image" />
-    <textarea formControlName="description" placeholder="Description"></textarea>
-    <input type="number" formControlName="price" placeholder="Price" />
-    <button type="submit">Submit</button>
-  </form>
+<div class="md:flex">
+  <div class="md:w-[20%]">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="md:w-[80%] space-y-5">
+    <app-topnav></app-topnav>
+    <div class="flex justify-center px-5 w-full">
+      <div>
+        <div class="font-bold text-slider md:text-3xl font-xl py-5 space-y-2 uppercase text-center">
+          <p>Update Product</p>
+          <!-- <div class="h-1 md:w-2/4 w-1/2 bg-slider rounded-full"></div> -->
+        </div>
+        <form class="space-y-5">
+          <div>
+            <!-- <label for="name">Product Name</label> -->
+
+            <input type="text" name="name" placeholder="Product Name" [(ngModel)]="product.name"
+              class="border-b w-full outline-none border-b-slider py-3 px-2">
+          </div>
+          <div>
+            <input type="file" name="image" class="border-b w-full outline-none border-b-slider py-3 px-2"
+              [(ngModel)]="product.image">
+          </div>
+          <div>
+            <textarea name="description" placeholder="Product Description" [(ngModel)]="product.description"
+              class="border w-full outline-none border-slider py-3 px-2"></textarea>
+          </div>
+          <div>
+            <input type="number" name="price" placeholder="Product Price" [(ngModel)]="product.price"
+              class="border-b w-full outline-none border-b-slider py-3 px-2">
+          </div>
+          <button type="submit" (click)='onSubmit()' class="w-full bg-slider py-3 px-2 text-white">Update
+            Product</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-bottom-nav></app-bottom-nav>
 </div>

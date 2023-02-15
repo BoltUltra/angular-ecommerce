@@ -19,8 +19,8 @@
         <div>
           <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
           <div class="mt-1">
-            <input id="password" name="password" type="password" autocomplete="current-password" required
-              formControlName="password"
+            <input [(ngModel)]="inputText" id="password" name="password" type="password" autocomplete="current-password"
+              required formControlName="password"
               class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-hr focus:outline-none focus:ring-hr sm:text-sm">
           </div>
         </div>
@@ -36,13 +36,19 @@
           </div>
         </div>
 
-        <div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-hr focus:outline-none focus:ring-2 focus:ring-hr focus:ring-offset-2">Login</button>
+        <div class="flex">
+
+          <button type="submit" [disabled]="!inputText"
+            class="flex w-full space-x-3 items-center justify-center rounded-md border border-transparent disabled:bg-slate-600 focus:border-primary m-1 bg-primary py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-hr focus:outline-none focus:ring-2 focus:ring-hr focus:ring-offset-2">
+            <div *ngIf="isLoading" class="shapes-4"></div> <span>Login</span>
+          </button>
         </div>
       </form>
       <div>
-        <p class="text-center bg-green-50 text-green-700 py-2 rounded-md my-5">{{successMessage}}</p>
+        <p *ngIf="successMessage" class="text-center bg-green-50 text-green-700 py-2 rounded-md my-5">Login Successful
+        </p>
+        <p *ngIf="errorMessage" class="text-center bg-red-50 text-red-700 py-2 rounded-md my-5">{{error}}
+        </p>
       </div>
     </div>
   </div>

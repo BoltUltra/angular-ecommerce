@@ -16,11 +16,12 @@ export class ProductsComponent {
       const response = await axios.get(
         'https://ecom.hoolioapps.com/api/products'
       );
-      this.products = response.data.data;
-      console.log(this.products.length);
+      this.products = response.data.data.reverse();
+      // console.log(this.products);
+      // console.log(this.products.reverse());
     } catch (error) {
       this.errorMessage = 'An error occurred while fetching the data';
-      console.log(error);
+      // console.log(error);
     }
   }
 }

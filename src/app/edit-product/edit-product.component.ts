@@ -1,40 +1,55 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import axios from 'axios';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-// @Component({
-//   selector: 'app-edit-product',
-//   templateUrl: './edit-product.component.html',
-//   styleUrls: ['./edit-product.component.css'],
-// })
-// export class EditProductComponent implements OnInit {
-//   editForm: FormGroup;
+@Component({
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css'],
+})
+export class EditProductComponent {
+  // product: any;
 
-//   constructor(private fb: FormBuilder) {}
+  successMessage: boolean = false;
+  success: string = '';
+  error: string = '';
+  errorMessage: boolean = false;
 
-//   ngOnInit() {
-//     this.editForm = this.fb.group({
-//       name: ['', Validators.required],
-//       image: [null, Validators.required],
-//       description: ['', Validators.required],
-//       price: [0, Validators.required],
-//     });
-//   }
+  product = {
+    name: '',
+    image: '',
+    description: '',
+    price: 0,
+  };
 
-//   onSubmit() {
-//     const formData = new FormData();
-//     formData.append('name', this.editForm.get('name').value);
-//     formData.append('image', this.editForm.get('image').value);
-//     formData.append('description', this.editForm.get('description').value);
-//     formData.append('price', this.editForm.get('price').value);
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
-//     axios
-//       .put(`https://ecom.hoolioapps.com/api/products/${productId}`, formData)
-//       .then((response) => {
-//         console.log(response.data);
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }
-// }
+  ngOnInit(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.http
+      .get(`https://ecom.hoolioapps.com/api/products/${id}`)
+      .subscribe((product: any) => {
+        this.product = product.product;
+        console.log(this.product);
+      });
+  }
+
+  onSubmit(): void {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', `Bearer ${token}`);
+    this.http
+      .patch(`https://ecom.hoolioapps.com/api/products/${id}`, this.product, {
+        headers,
+      })
+      .subscribe((response: any) => {
+        console.log(response);
+      });
+  }
+}

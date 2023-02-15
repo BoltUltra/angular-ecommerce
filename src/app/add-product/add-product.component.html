@@ -25,12 +25,21 @@
               class="border w-full outline-none border-slider py-3 px-2"></textarea>
           </div>
           <div>
-            <input type="number" [(ngModel)]="product.price" name="price" placeholder="Product Price"
-              class="border-b w-full outline-none border-b-slider py-3 px-2">
+            <input type="number" [(ngModel)]="inputText" [(ngModel)]="product.price" name="price"
+              placeholder="Product Price" class="border-b w-full outline-none border-b-slider py-3 px-2">
           </div>
-          <button type="submit" class="w-full bg-slider py-3 px-2 text-white">Add Product</button>
+          <button type="submit" [disabled]="!inputText"
+            class="w-full flex items-center space-x-3 justify-center bg-slider py-3 px-2 text-white disabled:cursor-not-allowed disabled:text-slider disabled:bg-transparent disabled:border border-slider">
+            <div *ngIf="isLoading" class="shapes-4"></div>
+            <span>Add Product</span>
+          </button>
         </form>
-        <p class="text-center bg-green-50 text-green-700 py-2 rounded-md my-5">{{message}}</p>
+        <div>
+          <p *ngIf="successMessage" class="text-center bg-green-50 text-green-700 py-2 rounded-md my-5">{{success}}
+          </p>
+          <p *ngIf="errorMessage" class="text-center bg-red-50 text-red-700 py-2 rounded-md my-5">{{error}}
+          </p>
+        </div>
       </div>
     </div>
   </div>

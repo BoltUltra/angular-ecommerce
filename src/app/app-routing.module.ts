@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
 import { DashboardProductsComponent } from './dashboard-products/dashboard-products.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'add', component: AddProductComponent },
   { path: 'products', component: DashboardProductsComponent },
+  { path: 'edit/:id', component: EditProductComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

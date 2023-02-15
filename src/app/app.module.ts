@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -27,6 +28,7 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { DataTablesModule } from 'angular-datatables';
 import { DashboardProductsComponent } from './dashboard-products/dashboard-products.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     BottomNavComponent,
     DashboardProductsComponent,
     ForgetPasswordComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     NgxPaginationModule,
     ReactiveFormsModule,
     DataTablesModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

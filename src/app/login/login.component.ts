@@ -9,9 +9,12 @@ import axios from 'axios';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  errorMessage: string = '';
+  errorMessage: boolean = false;
   loginForm: FormGroup;
-  successMessage: string = '';
+  successMessage: boolean = false;
+  error: string = '';
+  isLoading: boolean = false;
+  inputText: string = '';
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -34,17 +37,30 @@ export class LoginComponent {
       .then((response) => {
         // handle success
         // console.log('success');
-        console.log(response);
+        console.log(response.data.message);
         console.log(response.data.data.token);
-        this.successMessage = 'Login successful!';
         localStorage.setItem('token', response.data.data.token);
+        this.successMessage = true;
+        setTimeout(() => {
+          this.successMessage = false;
+        }, 2000);
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         // handle error
-        this.errorMessage = error.response.data.message;
+        this.error = error.response.data.message;
+        console.log(error.response.data.message);
+        this.errorMessage = true;
+        setTimeout(() => {
+          this.errorMessage = false;
+        }, 2000);
       });
+
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 }

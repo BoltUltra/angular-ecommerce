@@ -8,6 +8,12 @@ import axios from 'axios';
   styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit {
+  inputText: string = '';
+  isLoading: boolean = false;
+  errorMessage: boolean = false;
+  successMessage: boolean = false;
+  error: string = '';
+  success: string = '';
   product = {
     name: '',
     image: null,
@@ -40,7 +46,8 @@ export class AddProductComponent implements OnInit {
       })
       .then((response) => {
         console.log(response.data.message);
-        this.message = response.data.message;
+        this.successMessage = response.data.message;
+        this.success = response.data.message;
         setTimeout(() => {
           this.router.navigate(['/dashboard']);
         }, 2000);
@@ -48,6 +55,11 @@ export class AddProductComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       });
+
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2000);
   }
 
   ngOnInit(): void {}
